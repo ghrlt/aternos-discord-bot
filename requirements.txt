@@ -1,1 +1,4 @@
-python-aternos
+discord.py
+python-aternosd
+python-dotenv
+aiohttp
