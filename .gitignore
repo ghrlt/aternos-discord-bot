@@ -1,3 +1,5 @@
 .env
-__pycache__
 uconfig.json
+__pycache__
+logs/
+sessions/
