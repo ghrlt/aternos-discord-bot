@@ -220,7 +220,7 @@ async def setdefault(interaction: discord.Interaction, server_ip: str):
 	private="Set to True if you don't want everyone to know you checked this server status.",
 	server_ip="The address of the server you wanna check"
 )
-async def status(interaction: discord.Interaction, server_ip: str="default", private: bool=False):
+async def status(interaction: discord.Interaction, server_ip: str="default", port: int=46390, private: bool=False):
 	gid = str(interaction.guild.id)
 	uid = str(interaction.user.id)
 
@@ -246,12 +246,16 @@ async def status(interaction: discord.Interaction, server_ip: str="default", pri
 
 	await interaction.response.defer(ephemeral=private)
 
+
 	async with aiohttp.ClientSession() as s:
-		async with s.get("https://mcapi.us/server/status", params={"ip": server_ip}) as r:
+		async with s.get("https://mcapi.us/server/status", params={"ip": server_ip, "port": port}) as r:
 			res = json.loads(await r.text())
 
 			if res['status'] != "success":
 				msg = f"❌ There was an error.\n> {res['error']}"
+
+				if res['last_updated'] + 60*5 > time.time():
+					msg += "\n\n*/!\\ Be aware that the results are from less than 5 minutes ago, and thus might not be up to date!*"
 
 			else:
 				if res['players']['max'] == 0:
