@@ -1,4 +1,4 @@
 discord.py
-python-aternosd
+python-aternos
 python-dotenv
 aiohttp
