@@ -20,6 +20,9 @@ fP = os.path.dirname(os.path.realpath(__file__))
 sP = os.path.dirname(os.path.realpath(__file__)) + "/sessions/{username}.aternos"
 if not 'logs' in os.listdir(fP): os.mkdir(f"{fP}/logs")
 if not 'sessions' in os.listdir(fP): os.mkdir(f"{fP}/sessions")
+if not 'uconfig.json' in os.listdir(fP):
+	with open('uconfig.json', 'w') as f:
+		json.dump({"guilds": {}, "users": {}}, f, indent=2)
 
 # Silence other loggers
 #for log_name, log_obj in logging.Logger.manager.loggerDict.items():
