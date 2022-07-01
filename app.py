@@ -254,7 +254,7 @@ async def status(interaction: discord.Interaction, server_ip: str="default", por
 			if res['status'] != "success":
 				msg = f"❌ There was an error.\n> {res['error']}"
 
-				if res['last_updated'] + 60*5 > time.time():
+				if int(res['last_updated']) + 60*5 > time.time():
 					msg += "\n\n*/!\\ Be aware that the results are from less than 5 minutes ago, and thus might not be up to date!*"
 
 			else:
