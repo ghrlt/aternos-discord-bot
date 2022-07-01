@@ -93,7 +93,7 @@ def update_user(user_id, username: str=None, servers: list=None):
 
 @bot.command()
 async def sync(ctx):
-	if not ctx.message.author.id == os.getenv('BOT_ADMIN'):
+	if not str(ctx.message.author.id) == os.getenv('BOT_ADMIN'):
 		return
 
 	await bot.tree.sync()
@@ -101,7 +101,7 @@ async def sync(ctx):
 
 @bot.command()
 async def showdb(ctx):
-	if not ctx.message.author.id == os.getenv('BOT_ADMIN'):
+	if not str(ctx.message.author.id) == os.getenv('BOT_ADMIN'):
 		return
 
 	await ctx.message.reply(file=discord.File(f"{fP}/uconfig.json"))
