@@ -236,6 +236,13 @@ async def status(interaction: discord.Interaction, server_ip: str="default", pri
 					ephemeral=False
 				)
 				return
+		else:
+
+			await interaction.response.send_message(
+				"❌ This guild does NOT have any default server ip configured.. Use /setdefault to do so.",
+				ephemeral=False
+			)
+			return
 
 	await interaction.response.defer(ephemeral=private)
 
@@ -299,6 +306,12 @@ async def turnon(interaction: discord.Interaction, server_ip: str="default", pri
 					ephemeral=False
 				)
 				return
+		else:
+			await interaction.response.send_message(
+				"❌ This guild does NOT have any default server ip configured.. Use /setdefault to do so.",
+				ephemeral=False
+			)
+			return
 
 
 	await interaction.response.defer(ephemeral=private)
@@ -345,6 +358,12 @@ async def turnoff(interaction: discord.Interaction, server_ip: str="default", pr
 					ephemeral=False
 				)
 				return
+		else:
+			await interaction.response.send_message(
+				"❌ This guild does NOT have any default server ip configured.. Use /setdefault to do so.",
+				ephemeral=False
+			)
+			return
 
 
 	await interaction.response.defer(ephemeral=private)
